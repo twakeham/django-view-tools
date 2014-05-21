@@ -1,0 +1,9 @@
+<form method='post' id='filter_form'>
+	{% csrf_token %}
+	
+	{% for field in filter_form %}
+		{{ field.label_tag }}
+		{{ field }}
+	{% endfor %}
+	
+</form>

@@ -1,0 +1,45 @@
+<div class="modal-dialog" id='modal-form'>
+	<form data-async data-target='#modal-form' method='post' action='{{ action }}' {% if form.is_multipart %}enctype='multipart/form-data'{% endif %}>
+		{% csrf_token %}
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+					&times;
+				</button>
+				<h4 class="modal-title" id="modal-label">{% block modal-title %}{% endblock %}</h4>
+			</div>
+			<div class="modal-body">
+				{% block modal-content %}{% endblock %}
+				<script>
+					$('#modal-form form').on('submit', function(event) {
+					var $form = $(this);
+			        var $target = $($form.attr('data-target'));
+			 
+			        $.ajax({
+			            type: $form.attr('method'),
+			            url: $form.attr('action'),
+			            data: $form.serialize(),
+			 
+			            success: function(data, status) {
+			                $target.html(data);
+			            }
+			        });
+			 
+			        event.preventDefault();
+			
+				});
+			</script>
+			</div>
+			<div class="modal-footer">
+				{% block modal-footer %}
+					<button type="button" class="btn btn-default" data-dismiss="modal">
+						Close
+					</button>
+					<button type="button" class="btn btn-primary">
+						Submit
+					</button>
+				{% endblock %}
+			</div>
+		</div>
+	</form
+</div>

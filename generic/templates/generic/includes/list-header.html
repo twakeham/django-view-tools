@@ -1,0 +1,14 @@
+{% if field in sort_fields %}
+	{% if sort_field == field %}
+		{% if sort_order == 'asc' %}
+			<a href='?sort_field={{ field }}&sort_order=dec'>{{ title|capfirst }} <span class='caret'></span></a>
+		{% else %}
+			<a href='?sort_field={{ field }}&sort_order=asc'>{{ title|capfirst }} <span class='up-caret'></span></a>
+		{% endif %}
+	{% else %}
+		<a href='?sort_field={{ field }}&sort_order=asc'>{{ title|capfirst }}</a>
+	{% endif %}
+{% else %}
+	<span class='disabled'>{{ title|capfirst }}</span>
+{% endif %}
+

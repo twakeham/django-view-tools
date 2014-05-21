@@ -1,0 +1,23 @@
+{% load widget_tweaks %}
+<section class="panel" id='comments'>
+	<header class="panel-heading">
+ 		<strong>Comments</strong>
+ 		<span class="tools pull-right"> 
+ 			<a class="fa fa-chevron-down" href="javascript:;"></a> 
+ 		</span>
+	</header>
+	<div class="panel-body">
+		<div class="timeline-messages">
+			{% for comment in comments %}
+				{% include 'comment/includes/comment.html' %}
+			{% endfor %}
+        </div>
+        <div class='comment-form'>
+        	<form enctype='multipart/form-data'>
+        		{% csrf_token %}
+        		{% render_field comment_form.comment placeholder="Enter comment here..." class="form-control col-lg-6" rows="4" %}
+        		<button type='submit' class='btn btn-primary pull-right'>Submit</button>
+        	</form>
+        </div>
+   </div>
+</section>

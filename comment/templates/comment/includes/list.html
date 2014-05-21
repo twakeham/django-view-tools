@@ -1,0 +1,17 @@
+	{% if comments %}
+		<ul class='list-group'>
+			{% for comment in comments %}
+				<li class='list-group-item' id='comment-{{ comment.pk }}'>
+					<span class='pull-right'><small>{{ comment.created_date }}</small></span>
+					<h4 class="list-group-item-heading"><a href='{{ comment.user.get_absolute_url }}' class='user-profile-link'>{{ comment.user.first_name|capfirst }} {{ comment.user.last_name|capfirst }}</a></h4>
+					{{ comment.content }}
+				</li>
+			{% endfor %}
+		</ul>
+	{% else %}
+		<div class='panel-body'>
+			No comments
+		</div>
+	{% endif %}
+	
+

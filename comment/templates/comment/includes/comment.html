@@ -1,0 +1,12 @@
+<div class="msg-time-chat">
+    <a href="#accounts/{{ comment.user.get_absolute_url }}" class="message-img">
+    	<img class="avatar" src="{{ comment.user.avatar.image.url }}" alt="">
+    </a>
+    <div class="message-body msg-in">
+        <span class="arrow"></span>
+        <div class="text">
+            <p class="attribution"><a href="#">{{ comment.user.get_full_name }}</a> at {{ comment.created_date }}</p>
+            {{ comment.content|linebreaks }}
+        </div>
+    </div>
+</div>
